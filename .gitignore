@@ -1,0 +1,18 @@
+# macOS system files
+.DS_Store
+
+# Compiled object files
+*.o
+
+# Executable binaries
+a.out
+*.out
+*.exe
+
+# Build directories
+/build/
+/bin/
+/obj/
+
+# Backup or temporary files
+*~
