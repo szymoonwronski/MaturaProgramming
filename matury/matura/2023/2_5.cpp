@@ -35,18 +35,13 @@ string binXOR(string a, string b) {
   reverse(a.begin(), a.end());
   reverse(b.begin(), b.end());
 
-  if (b.size() > a.size()) {
-    string temp = a;
-    a = b;
-    b = temp;
-  }
-
   for (int i = 0; i < a.size(); i++) {
     if (i < b.size()) {
       char c = a[i] == b[i] ? '0' : '1';
       res = c + res;
     } else {
-      res = '1' + res;
+      char c = a[i] == '0' ? '0' : '1';
+      res = c + res;
     }
   }
 
