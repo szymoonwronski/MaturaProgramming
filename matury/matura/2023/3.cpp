@@ -101,38 +101,42 @@ void zad4() {
   string maxiSeq = "";
 
   for (int len = 4; len <= numOfLines; len++) {
+    cout << len << '\n';
     for (int startIndex = 0; startIndex + len - 1 < numOfLines; startIndex++) {
       bool valid = false;
       string seq = "";
+
       for (int k = 2; k <= len - 2; k++) {
-        seq = "";
         bool kValid = true;
 
+        // ciag rosnacy
         for (int i = 0; i + 1 < k; i++) {
-          seq += '0' + t[startIndex + i];
           if (t[startIndex + i + 1] <= t[startIndex + i]) {
             kValid = false;
             break;
           }
         }
-        seq += '0' + t[startIndex + k - 1];
+
         if (!kValid) break;
+
+        // ciag malejacy
         for (int i = k; i <= len - 2; i++) {
-          seq += '0' + t[startIndex + i];
           if (t[startIndex + i] <= t[startIndex + i + 1]) {
             kValid = false;
             break;
           }
         }
-        seq += '0' + t[startIndex + len - 1];
 
         if (kValid) {
+          seq = "";
+          for (int i = 0; i < len; i++) seq += '0' + t[startIndex + i];
+
           valid = true;
           break;
         }
       }
 
-      if (valid && len > maxiSeq.size()) {
+      if (valid) {
         maxiSeq = seq;
         maxiIndex = startIndex + 1;
         break;
